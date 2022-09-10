@@ -18,18 +18,18 @@ public class VetorSelecao {
 		{
 			System.out.print(selecao[t]);
 			System.out.println(" Ganhou, Empatou ou Perdeu [G/E/P] ");
-			totalPontos = ler.next().charAt(0);
-			if(totalPontos == 'G' || totalPontos == 'g') 
+			totalPontos = ler.next().toUpperCase().charAt(0);
+			if(totalPontos == 'G') 
 			{
-				pontos[t] = pontos[t]+3;
+				pontos[t] +=3;
 			}
-			else if(totalPontos == 'E'|| totalPontos == 'e')
+			else if(totalPontos == 'E')
 			{
-				pontos[t] = pontos[t]+1;
+				pontos[t] +=1;
 			}
-			else if(totalPontos == 'P'|| totalPontos == 'p') 
+			else if(totalPontos == 'P') 
 			{
-				pontos[t] = pontos[t]+0;
+				pontos[t] +=0;
 
 			}else
 				System.out.println("Você digitou alguma coisa invalida!!!!");
