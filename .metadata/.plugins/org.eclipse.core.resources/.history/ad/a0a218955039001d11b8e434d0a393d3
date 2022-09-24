@@ -1,0 +1,76 @@
+package MinhaLoja;
+
+import java.util.Scanner;
+
+public class MinhaLojinha {
+
+	public static void main(String[] args) {
+		Scanner leia = new Scanner(System.in);
+
+		String codigo[]= {"cod-1","cod-2","cod-3","cod-4","cod-5","cod-6","cod-7","cod-8","cod-9","cod-10"};
+		String produtos[]= {"Camisa Azul","Blusa Preta","Calça Jeans","Touca Cinza","Bota Marrom","Tennis Preto","Camiseta Regata","Calça Moletom","Jaqueta Jeans","Jaqueta Couro"};
+		double preco[]= {20,50,60,15,90,100,25,65,99,120};
+		int estoque [] = new int[11];
+		int carrinho[]= new int[10];
+		char compra = 'N';
+		String auxcodigo="";
+		int posicao = 0;
+		
+		for(int i=0;i<=10;i++) {
+			estoque[i]=10;
+		}do {
+			System.out.println("Loja SK Store");
+			System.out.println("A moda é você quem faz!!");
+			
+			System.out.print("Deseja realizar um pedido S/N: ");
+			compra=leia.next().toUpperCase().charAt(0);
+			if(compra == 'N') {
+				break;
+			} 
+			else if(compra=='S') {
+				System.out.println("----------------------------------------------");
+				System.out.println("CÓDIGO\t\tPRODUTO\tPREÇO\tESTOQUE");
+				System.out.println("----------------------------------------------");
+				for(int i=0;i<10;i++) {
+					System.out.println(codigo[i]+"\t"+produtos[i]+"\t" + preco[i]+"\t"+estoque[i]);
+				}
+				System.out.println();
+				System.out.print("Digite o codigo do produto : ");
+				auxcodigo=leia.next();
+				for(int i=0;i<10;i++) {
+					if(auxcodigo.equals(codigo[i])) {
+						posicao=i;
+						System.out.println("----------------------------------------------");
+						System.out.println("CÓDIGO\t\tPRODUTO\tPREÇO\tESTOQUE");
+						System.out.println("----------------------------------------------");
+						System.out.println(codigo[i]+"\t"+produtos[i]+"\t" + preco[i]+"\t"+estoque[i]);
+					}
+					
+				}
+				if(estoque[posicao]==0) {
+					System.out.println("Produto indisponivel");
+				} else {
+					System.out.println("Digite a quantidade: ");
+					carrinho[posicao]=leia.nextInt();
+					while(carrinho[posicao]<=0 ||carrinho[posicao]>estoque[posicao]) {
+						System.out.println("Digitação Invalida!!");
+						System.out.println("Digite a quantidade: ");
+						carrinho[posicao]=leia.nextInt();
+					}
+					
+				}
+				
+				
+			} 
+			else {
+				System.out.println("Digitação invalida, saindo do programa!!!");
+			}
+			
+			
+			
+		} while(compra=='S');
+		
+		System.out.println("Ate breve");
+	}
+
+}

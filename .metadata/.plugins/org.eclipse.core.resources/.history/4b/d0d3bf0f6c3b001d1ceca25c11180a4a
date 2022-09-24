@@ -1,0 +1,89 @@
+package MinhaLoja;
+
+import java.util.Scanner;
+
+public class LojaDefinitiva {
+
+	public static void main(String[] args) {
+		 Scanner leia = new Scanner(System.in);
+	       //variaveis
+	       String espaco = " | ";
+	       String codigo[] = {"GRP04-01", "GRP04-02", "GRP04-03", "GRP04-04", "GRP04-05", "GRP04-06", "GRP04-07", "GRP04-08", "GRP04-09", "GRP04-10"};
+	       String produtos[] = new String[10];
+	       produtos[0]="Arroz          ";
+	       produtos[1]="Feijão         ";
+	       produtos[2]="Macarrão       ";
+	       produtos[3]="Café           ";
+	       produtos[4]="Leite          ";
+	       produtos[5]="Suco           ";
+	       produtos[6]="Banana         ";
+	       produtos[7]="Maça           ";
+	       produtos[8]="File de frango ";
+	       produtos[9]="Papel Higienico";
+	       double valor[] = {19.99, 12.49, 1.99, 18.99, 16.44, 0.99, 7.99, 4.99, 18.99, 11.99};
+	       int estoque[] = {10, 10, 10, 10, 10, 10, 10, 10, 10, 10};
+	       int carrinho[] = new int[10];
+	       char resposta = 'n';
+	       String auxCod = "";
+	       int auxQtde = 0;
+	       int posicao = 0;
+	       double auxSubTotal=0.00;
+	       double total=0.00;
+	       //pergunta
+	       System.out.println("Supermercado BARATIX onde o seu dinheiro é valorizado");
+	       do { //LAÇO DO PROCESSO PRINCIPAL
+	           System.out.print("Deseja fazer a compra? ");
+	           resposta = leia.next().toUpperCase().charAt(0);
+	           if (resposta == 'S') {
+	               //cabeçalho de texto
+	               System.out.println("codigo\t\t | produto\t\t\t | estoque\t | valor");
+	               System.out.println("-----------------------------------------------------");
+	               for (int i = 0; i < 10; i++) {
+	                   System.out.printf(codigo[i]+"\t"+espaco+produtos[i]+"\t"+espaco+"\t"+estoque[i]+"\t\t"+espaco+valor[i]+"\n");
+
+	               }
+	               System.out.println("===========CARRINHO DE COMPRAS=======================");
+	               //exibição dos produtos do carrinho
+	               //cabeçalho de texto
+	               System.out.println("codigo\t\t | produto\t\t\t | estoque\t | valor\t\t | qtde\t\tSUB-TOTAL");
+	               System.out.println("=====================================================");
+	               for (int i = 0; i < 10; i++) {
+	                   if(carrinho[i]>0){
+	                       auxSubTotal = (carrinho[i]*valor[i]);
+	                       System.out.printf(codigo[i]+"\t"+espaco+produtos[i]+"\t"+espaco+"\t"+estoque[i]+"\t\t"+espaco+valor[i]+"\t\t"+espaco+carrinho[i]+"\t\t"+(carrinho[i]*valor[i])+"\n");
+	                       if(i<10){
+	                           //resolva essa bucha
+	                           total = total + auxSubTotal;
+	                       }
+
+	                   }
+	               }
+	               System.out.printf("Total até agora R$ %.2f",total);
+
+	               System.out.println(); //equivalente a pular uma linha
+	               System.out.print("Digite o codigo do produto : ");
+	               auxCod = leia.next().toUpperCase();
+
+	               //varrer o vetor
+	               //mostra carrinho atual
+	               System.out.println("codigo\t\t | produto\t\t\t | estoque\t | valor");
+	               for(int i=0; i<10; i++){
+	                   if (codigo[i].equals(auxCod)) {
+	                       System.out.printf(codigo[i]+"\t"+espaco+produtos[i]+"\t"+espaco+"\t"+estoque[i]+"\t\t"+espaco+valor[i]+"\t\t"+espaco+valor[i]+"\n");
+	                       posicao = i;
+	                   }
+	               }
+	               System.out.print("Digite a quantidade :");
+	               auxQtde = leia.nextInt();
+	               carrinho[posicao]=auxQtde;
+
+	           }
+	           else {
+	               System.out.println("Até breve.");
+	           }
+	       } while(resposta=='S');
+
+
+	}
+
+}

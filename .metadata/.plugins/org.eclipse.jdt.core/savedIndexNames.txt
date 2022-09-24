@@ -1,0 +1,6 @@
+INDEX VERSION 1.131+C:\Users\bruno\OneDrive\Área de Trabalho\Aulas Ubuntu\JAVA\.metadata\.plugins\org.eclipse.jdt.core
+2791633308.index
+1865797976.index
+2498863577.index
+4105270174.index
+2159265395.index
